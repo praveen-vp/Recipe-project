@@ -1,23 +1,41 @@
 package com.pvp.recipe.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Notes {
 
-	private String recipe;
-	private String recipeNotes;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-	public String getRecipe() {
-		return recipe;
-	}
+    @OneToOne
+    private String recipe;
 
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
-	}
+    @Lob
+    private String recipeNotes;
 
-	public String getRecipeNotes() {
-		return recipeNotes;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setRecipeNotes(String recipeNotes) {
-		this.recipeNotes = recipeNotes;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getRecipeNotes() {
+        return recipeNotes;
+    }
+
+    public void setRecipeNotes(String recipeNotes) {
+        this.recipeNotes = recipeNotes;
+    }
 }

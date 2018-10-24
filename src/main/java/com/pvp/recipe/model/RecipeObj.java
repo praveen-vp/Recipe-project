@@ -1,109 +1,129 @@
 package com.pvp.recipe.model;
 
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class RecipeObj {
 
-	private String description;
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String description;
+    private String name;
+    private int servings;
+    private int prepTime;
+    private int cookTime;
 
-	private int servings;
-	private int prepTime;
-	private int cookTime;
+    @Lob
+    private Byte[] image;
 
-	private Byte[] image;
-	private int rating;
-	private Difficulty difficultyLevel;
+    // TODO add
+    //private Difficulty difficulty;
+    private String url;
+    private String source;
+    private int rating;
 
-	private String url;
-	private String source;
-	private Notes note;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipeObj")
+    private Set<Ingradients> ingradients;
 
-	public String getDescription() {
-		return description;
-	}
+    @OneToOne(cascade = CascadeType.ALL)
+    private Notes notes;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Set<Ingradients> getIngradients() {
+        return ingradients;
+    }
 
-	public int getServings() {
-		return servings;
-	}
+    public void setIngradients(Set<Ingradients> ingradients) {
+        this.ingradients = ingradients;
+    }
 
-	public void setServings(int servings) {
-		this.servings = servings;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public int getPrepTime() {
-		return prepTime;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setPrepTime(int prepTime) {
-		this.prepTime = prepTime;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getCookTime() {
-		return cookTime;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setCookTime(int cookTime) {
-		this.cookTime = cookTime;
-	}
+    public int getServings() {
+        return servings;
+    }
 
-	public Byte[] getImage() {
-		return image;
-	}
+    public void setServings(int servings) {
+        this.servings = servings;
+    }
 
-	public void setImage(Byte[] image) {
-		this.image = image;
-	}
+    public int getPrepTime() {
+        return prepTime;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public void setPrepTime(int prepTime) {
+        this.prepTime = prepTime;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+    public int getCookTime() {
+        return cookTime;
+    }
 
-	public Difficulty getDifficultyLevel() {
-		return difficultyLevel;
-	}
+    public void setCookTime(int cookTime) {
+        this.cookTime = cookTime;
+    }
 
-	public void setDifficultyLevel(Difficulty difficultyLevel) {
-		this.difficultyLevel = difficultyLevel;
-	}
+    public Byte[] getImage() {
+        return image;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public void setImage(Byte[] image) {
+        this.image = image;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getSource() {
-		return source;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setSource(String source) {
-		this.source = source;
-	}
+    public String getSource() {
+        return source;
+    }
 
-	public Notes getNote() {
-		return note;
-	}
+    public void setSource(String source) {
+        this.source = source;
+    }
 
-	public void setNote(Notes note) {
-		this.note = note;
-	}
+    public int getRating() {
+        return rating;
+    }
 
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public Notes getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Notes notes) {
+        this.notes = notes;
+    }
 }
