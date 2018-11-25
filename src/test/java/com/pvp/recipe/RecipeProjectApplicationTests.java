@@ -1,4 +1,4 @@
-package com.pvp.recipe.recipeproject;
+package com.pvp.recipe;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

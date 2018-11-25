@@ -1,4 +1,4 @@
-package com.pvp.recipe.recipeproject.controllers;
+package com.pvp.recipe.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

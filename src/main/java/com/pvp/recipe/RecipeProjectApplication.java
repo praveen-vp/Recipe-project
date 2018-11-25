@@ -1,4 +1,4 @@
-package com.pvp.recipe.recipeproject;
+package com.pvp.recipe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

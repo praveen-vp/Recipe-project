@@ -1,4 +1,4 @@
-package com.pvp.recipe.recipeproject.model;
+package com.pvp.recipe.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
