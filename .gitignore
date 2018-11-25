@@ -1,7 +1,7 @@
 
 # Compiled class file
 *.class
-
+recipe-project.iml
 # Log file
 *.log
 
