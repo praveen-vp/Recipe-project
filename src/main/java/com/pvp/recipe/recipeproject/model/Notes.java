@@ -1,4 +1,4 @@
-package com.pvp.recipe.model;
+package com.pvp.recipe.recipeproject.model;
 
 import javax.persistence.*;
 
@@ -7,10 +7,10 @@ public class Notes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @OneToOne
-    private String recipe;
+    private Recipe recipe;
 
     @Lob
     private String recipeNotes;
@@ -23,11 +23,11 @@ public class Notes {
         this.id = id;
     }
 
-    public String getRecipe() {
+    public Recipe getRecipe() {
         return recipe;
     }
 
-    public void setRecipe(String recipe) {
+    public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
 

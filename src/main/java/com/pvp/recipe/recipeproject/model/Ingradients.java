@@ -1,4 +1,4 @@
-package com.pvp.recipe.model;
+package com.pvp.recipe.recipeproject.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ public class Ingradients {
     private UnitOfMeasure uom;
 
     @ManyToOne
-    private RecipeObj recipeObj;
+    private Recipe recipe;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Ingradients {
         this.amount = amount;
     }
 
-    public RecipeObj getRecipeObj() {
-        return recipeObj;
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setRecipeObj(RecipeObj recipeObj) {
-        this.recipeObj = recipeObj;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }

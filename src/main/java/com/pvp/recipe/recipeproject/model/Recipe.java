@@ -1,35 +1,43 @@
-package com.pvp.recipe.model;
+package com.pvp.recipe.recipeproject.model;
 
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class RecipeObj {
+public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private String name;
-    private int servings;
-    private int prepTime;
-    private int cookTime;
+    private Integer servings;
+    private Integer prepTime;
+    private Integer cookTime;
 
     @Lob
     private Byte[] image;
 
-    // TODO add
-    //private Difficulty difficulty;
     private String url;
     private String source;
-    private int rating;
+    private Integer rating;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipeObj")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingradients> ingradients;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -63,27 +71,27 @@ public class RecipeObj {
         this.name = name;
     }
 
-    public int getServings() {
+    public Integer getServings() {
         return servings;
     }
 
-    public void setServings(int servings) {
+    public void setServings(Integer servings) {
         this.servings = servings;
     }
 
-    public int getPrepTime() {
+    public Integer getPrepTime() {
         return prepTime;
     }
 
-    public void setPrepTime(int prepTime) {
+    public void setPrepTime(Integer prepTime) {
         this.prepTime = prepTime;
     }
 
-    public int getCookTime() {
+    public Integer getCookTime() {
         return cookTime;
     }
 
-    public void setCookTime(int cookTime) {
+    public void setCookTime(Integer cookTime) {
         this.cookTime = cookTime;
     }
 
@@ -111,11 +119,11 @@ public class RecipeObj {
         this.source = source;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -125,5 +133,21 @@ public class RecipeObj {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

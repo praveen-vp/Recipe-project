@@ -1,4 +1,4 @@
-package com.pvp.recipe.model;
+package com.pvp.recipe.recipeproject.model;
 
 public enum Difficulty {
 
