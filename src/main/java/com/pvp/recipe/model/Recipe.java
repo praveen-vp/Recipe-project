@@ -2,6 +2,7 @@ package com.pvp.recipe.model;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,7 +25,7 @@ public class Recipe {
     private Integer rating;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingradients> ingradients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
@@ -37,7 +38,10 @@ public class Recipe {
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
 
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
+
+    @Lob
+    private String directions;
 
     public Long getId() {
         return id;
@@ -47,12 +51,12 @@ public class Recipe {
         this.id = id;
     }
 
-    public Set<Ingradients> getIngradients() {
-        return ingradients;
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngradients(Set<Ingradients> ingradients) {
-        this.ingradients = ingradients;
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getDescription() {
@@ -149,5 +153,13 @@ public class Recipe {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 }
